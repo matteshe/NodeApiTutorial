@@ -1,6 +1,21 @@
+// import express web server
 const express = require('express')
 const app = express()
 const morgan = require('morgan')
+
+// import mongoose lib to access mongoDB
+const mongoose = require('mongoose')
+
+// load env variables
+const dotenv = require('dotenv');
+dotenv.config()
+
+
+// db
+mongoose.connect(process.env.MONGO_URI)
+.then(() => console.log('DB connected'))
+
+mongoose.connection.on('error', err => console.log(`DB connection error: ${err.message}`))
 
 // bring in routes
 const postRoutes = require('./routes/post');
