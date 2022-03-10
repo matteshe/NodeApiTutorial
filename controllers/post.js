@@ -4,4 +4,4 @@ exports.getPosts = (req, res) => {
         {title: "Second post"}
         ]   
     });
-}
+};
