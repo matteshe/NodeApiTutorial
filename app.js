@@ -3,6 +3,9 @@ const express = require('express')
 const app = express()
 const morgan = require('morgan')
 
+// import body-parser lib to parse the response content
+const bodyParser = require('body-parser')
+
 // import mongoose lib to access mongoDB
 const mongoose = require('mongoose')
 
@@ -22,6 +25,7 @@ const postRoutes = require('./routes/post');
 
 // middleware
 app.use(morgan('dev'));
+app.use(bodyParser.json());
 app.use('/', postRoutes);
 
 const port = 8080
