@@ -1,12 +1,12 @@
 const express = require('express')
-const postController = require('../controllers/post')
+const {getPosts, createPost} = require('../controllers/post')
 
 // index files are automatically found
-const validator = require('../validators')
+const {createPostValidator} = require('../validators')
 
 const router = express.Router()
 
-router.get('/', postController.getPosts)
-router.post('/post', validator.createPostValidator, postController.createPost)
+router.get('/', getPosts)
+router.post('/post', createPostValidator, createPost)
 
 module.exports = router
